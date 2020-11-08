@@ -1,29 +1,23 @@
+// reversing and input line!
 #include <stdio.h>
 
 #define MAX 200
 
 int read_line (char [ ]);
 void copy (char to[ ], char from[ ]);
+void reverse(char in[],int len);
 
 int main()
 {
 	int len = 0;
 	int maxlen = 0;
 	char line[MAX];
-	char lline[MAX];
 
 	while ((len = read_line(line)) > 0)
 	{
-		if (len > maxlen)
-		{
-			maxlen = len;
-			copy (lline,line);
-		}
+		reverse(line,len);
+		printf("%s",line);	
 	}
-	
-	printf("The longest line:\n");
-	printf("%s",lline);
-
 	return 0;
 }
 
@@ -58,4 +52,20 @@ void copy (char to[ ], char from[ ])
 		to[i] = from[i];
 	++i;
 	to[i] = '\0';
+}
+
+void reverse(char in[],int len)
+{
+	int i = len - 2;
+	int j = 0;
+	char dummy;
+	while (i > j)
+	{
+		dummy = in[j];
+		in[j] = in[i];
+		in[i] = dummy;
+		
+		--i;
+		++j;
+	}
 }

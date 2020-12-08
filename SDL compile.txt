@@ -1,0 +1,1 @@
+gcc -I/usr/include/SDL2 -o prog009 prog009.c $(sdl2-config --libs)
